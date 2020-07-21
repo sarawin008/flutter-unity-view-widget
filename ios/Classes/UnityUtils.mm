@@ -153,7 +153,10 @@ static BOOL _isUnityReady = NO;
         application.keyWindow.windowLevel = UIWindowLevelNormal + 1;
 
         InitUnity();
-
+        if (_isUnityReady) {
+            completed();
+            return;
+        }
         UnityAppController *controller = GetAppController();
         [controller application:application didFinishLaunchingWithOptions:nil];
         [controller applicationDidBecomeActive:application];
